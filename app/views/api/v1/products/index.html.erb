@@ -1,0 +1,55 @@
+<div class="page-header">
+  <h1><%= controller_name.humanize %>
+    <% if @products.empty? %>
+        <small>have not been created yet</small>
+    <%else%>
+        <small><%= action_name %></small>
+    <% end %>
+
+  </h1>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-hover">
+
+      <tr>
+        <th>Id</th>
+        <th>Product Name</th>
+        <th>Cost Price</th>
+        <th>Min Value</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Edit/Remove</th>
+
+      </tr>
+      <% @products.each do |product| %>
+          <tr>
+            <td> <%=product.id %></td>
+            <td> <%=link_to product.name, admin_product_path(product) %></td>
+            <td> <%=product.cost_price %></td>
+            <td> <%=product.min_value %></td>
+            <td> <%=product.product_type %></td>
+            <td> <%=product.price %></td>
+            <td><div class="btn-group" role="group">
+              <%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, edit_admin_product_path(product)%>
+              <%= link_to "<span class=\"glyphicon glyphicon-trash\"></span>".html_safe, admin_product_path(product), method: :delete, data: { confirm: 'Are you sure' } %>
+            </div></td>
+          </tr>
+      <%end%>
+
+
+
+    </table>
+
+
+      <div class="btn-group left" role="group">
+
+        <%= link_to "<span class=\"glyphicon glyphicon-plus\"></span> Add new product".html_safe, action: :new %>
+        <%= link_to "Go to cocktails <span class=\"glyphicon glyphicon-arrow-right\"></span>".html_safe, admin_cocktails_path %>
+      </div>
+  </div>
+</div>
+

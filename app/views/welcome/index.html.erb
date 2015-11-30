@@ -1,0 +1,51 @@
+<div class="page-header">
+  <h1><%= controller_name.humanize %>
+    <% if @cocktails.empty? %>
+        <small>have not been created yet</small>
+    <%else%>
+        <small><%= action_name %></small>
+    <% end %>
+
+  </h1>
+</div>
+<div class="body_panel panel-default">
+  <div class="panel-body">
+    <div class="row-eq-height">
+      <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+          <div style="text-align: center">
+            <%= link_to purchase_path(cocktail), class: "container_relative" do%>
+            <%= image_tag(cocktail.image_url, class: "img-thumbnail")%>
+                <div class="put_bottom_right">
+                  <h3><span class="label label-success">
+                    <%= cocktail.price%>
+                  </span> </h3>
+                </div>
+                <% end %>
+          </div>
+          <div class="caption">
+            <h3 class="hide_overflow"><%= cocktail.name %></h3>
+            <p style="height: 36px">
+              <% cocktail.ingredients.each do |ingredient| %>
+              <span class="label label-warning" > <%=  link_to ingredient.product.name, search_product_path(ingredient.product.name)  %></span>
+                  <% end %>
+            </p>
+
+            <p><a href="#" class="btn btn-primary" role="button"> button </a>
+           <a href="#" class="btn btn-default" role="button">another button </a></p>
+          </div>
+        </div>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

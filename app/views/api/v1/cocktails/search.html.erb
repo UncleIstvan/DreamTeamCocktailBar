@@ -1,0 +1,26 @@
+<h1>Hi</h1>
+<% if @cocktails.empty? %>
+    <h2>Search is empty</h2>
+<%else%>
+    <h2>Search result:</h2>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>cocktail Name</th>
+        <th>Cost Price</th>
+        <th>Min Value</th>
+        <th>Type</th>
+
+      </tr>
+      <% @cocktails.each do |cocktail| %>
+          <tr>
+            <td> <%=cocktail.id %></td>
+            <td> <%=cocktail.name %></td>
+            <td> <%=cocktail.cost_price %></td>
+            <td> <%=cocktail.min_value %></td>
+            <td> <%=cocktail.product_type %></td>
+          </tr>
+      <%end%>
+
+    </table>
+<%end%>

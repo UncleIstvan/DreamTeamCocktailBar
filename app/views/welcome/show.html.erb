@@ -1,0 +1,76 @@
+<div class="page-header">
+  <h1>  <%= @cocktail.name %>
+    <small> <%= @cocktail.value %> ml</small>
+
+    <!--<div class="btn-group right" role="group">-->
+
+      <!--<%= link_to "<span class=\"glyphicon glyphicon-arrow-left\"></span> Go back to main".html_safe, welcome_path %>-->
+    <!--</div>-->
+
+    <div class="right">
+
+      <small> <%= "Price: #{@cocktail.price}$" %> </small>
+    </div>
+
+
+  </h1>
+
+
+</div>
+
+
+
+
+<div class=" body_panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+
+      <br class="visible-xs-block">
+
+      <div class="col-sm-5 col-md-6 text-center">
+        <%= image_tag(@cocktail.image_url, size: '350', class: 'img-thumbnail') %>
+      </div>
+
+      <br class="visible-xs-block">
+
+
+
+          <div class="col-sm-7 col-md-6">
+            <div class="panel panel-info">
+              <!--<div class="panel-heading">-->
+                <!--<h3 class="panel-title">Ingredients</h3>-->
+              <!--</div>-->
+              <ul class="list-group">
+                <% @cocktail.ingredients.each do |ingredient| %>
+                    <li class="list-group-item li-vert-align">
+                      <%= image_tag(ingredient.product.image_url, size: '50', class: 'img-thumbnail') %>
+                      <%= "#{ingredient.product.name} #{ingredient.value} ml" %>
+                    </li>
+
+                <% end %>
+              </ul>
+            </div>
+          </div>
+
+
+      <br>
+
+
+
+
+
+    </div>
+
+      </div>
+
+  <div class="panel-heading">
+    <div class="col-md-12"></div>
+    <h3 class="panel-title">Description</h3>
+  </div>
+  <div class="panel-body">
+    <%= @cocktail.description %>
+  </div>
+
+</div>
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CocktailBar</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+       </button>
+      <a class="navbar-brand" href="#">CB Panel</a>
+
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if signed_in? %>
+      <ul class="nav navbar-nav">
+        <li> <%= link_to 'Products', admin_products_path %></li>
+        <li> <%= link_to 'Cocktails', admin_cocktails_path %></li>
+
+      </ul>
+      <%end%>
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? %>
+            <li><p class="navbar-text">logged as <%=link_to current_user.name, admin_user_path(current_user) %> </p></li>
+        <li><p class="navbar-text"> <%=link_to 'Sign out', admin_signout_path, method: 'delete' %> </p></li>
+            <% else %>
+        <li><p class="navbar-text"> <%=link_to 'Sign in', admin_signin_path %> </p></li>
+        <li><p class="navbar-text"> <%=link_to 'Sign up', admin_signup_path %> </p></li>
+        <%end%>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<% flash.each do |key,value|%>
+
+<%= content_tag(:div, value, class: "alert alert-#(key)") %>
+
+<%end%>
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<div class="page-header">
+  <h1>  <%= @cocktail.name %>
+    <small> <%= @cocktail.value %> ml</small>
+
+    <div class="btn-group right" role="group">
+      <%= link_to "<span class=\"glyphicon glyphicon-arrow-left\"></span> Go back to cocktails".html_safe, admin_cocktails_path %>
+      <%= link_to "<span class=\"glyphicon glyphicon-glass\"></span> Add new cocktail".html_safe, controller: 'admin/cocktails', action: :new %>
+      <%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, edit_admin_cocktail_path(@cocktail) %>
+      <%= link_to "<span class=\"glyphicon glyphicon-trash\"></span>".html_safe, admin_cocktail_path(@cocktail), method: :delete, data: {confirm: 'Are you sure'} %>
+      <%= link_to "<span class=\"glyphicon glyphicon-plus\"></span> Add new ingredient".html_safe, new_admin_cocktail_ingredient_path(@cocktail) %>
+    </div>
+  </h1>
+
+
+</div>
+
+
+
+
+<div class=" body_panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+
+      <br class="visible-xs-block">
+
+      <div class="col-sm-5 col-md-6 text-center">
+        <%= image_tag(@cocktail.image_url, size: '350', class: 'img-thumbnail') %>
+      </div>
+
+      <br class="visible-xs-block">
+
+
+        <div class="col-sm-7 col-md-6">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Details</h3>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><%= "ID: #{@cocktail.id}" %></li>
+              <li class="list-group-item"><%= "Name: #{@cocktail.name}" %></li>
+              <li class="list-group-item"><%= "Value: #{@cocktail.value} ml" %></li>
+              <li class="list-group-item"><%= "Price: #{@cocktail.price} $" %></li>
+            </ul>
+          </div>
+        </div>
+          <div class="col-sm-7 col-md-6">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">Ingredients</h3>
+              </div>
+              <ul class="list-group">
+                <% @cocktail.ingredients.each do |ingredient| %>
+                    <li class="list-group-item li-vert-align">
+                      <%= image_tag(ingredient.product.image_url, size: '50', class: 'img-thumbnail') %>
+                      <%= "#{ingredient.product.name} #{ingredient.value} ml" %>
+                      <div class="btn-group-wrapper">
+                        <div class="btn-group li-vert-align" role="group">
+                          <%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, edit_admin_cocktail_ingredient_path(@cocktail, ingredient) %>
+                          <%= link_to "<span class=\"glyphicon glyphicon-trash\"></span>".html_safe, admin_cocktail_ingredient_path(@cocktail, ingredient), method: :delete, data: {confirm: 'Are you sure'} %>
+                        </div>
+                      </div>
+                    </li>
+
+                <% end %>
+              </ul>
+            </div>
+          </div>
+
+
+      <br>
+
+
+        <div class="panel-heading">
+          <h3 class="panel-title">Description</h3>
+        </div>
+        <div class="panel-body">
+          <%= @cocktail.description %>
+        </div>
+
+
+
+    </div>
+      </div>
+</div>
