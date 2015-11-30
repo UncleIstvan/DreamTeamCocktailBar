@@ -35,6 +35,16 @@ module ApplicationHelper
   def form_field_row_select (form_builder, field_name, method, choices = nil, options = {}, html_options = {}, &block)
     "#{form_builder.label field_name, class: 'col-md-2 control-label'} <div class='col-md-2'> #{form_builder.select(method, choices, options, html_options)} </div>".html_safe
   end
+
+
+  def sort_buttons
+    result = '<div class="btn-group right" role="group">'
+    result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name')}"
+    result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price')}"
+    result += '</div>'
+    result.html_safe
+  end
+
 end
 
 

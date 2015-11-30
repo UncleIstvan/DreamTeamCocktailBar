@@ -50,9 +50,18 @@ Rails.application.routes.draw do
        match '/signup', to: 'users#new', via: 'get'
        resources :users, :products, :ingredients
 
+       # get '/cocktails/sort_by/:type' => 'cocktails#sort_by', as: :sort_by
+       # get '/products/sort_by/:type' => 'products#sort_by', as: :products_sort_by
+
+       get 'cocktails_sort_by/:type' => 'cocktails#sort_by', as: :cocktails_sort_by
+       get 'products_products_sort_by/:type' => 'products#sort_by', as: :product_sort_by
+
+
        resources :cocktails do
          resources :ingredients
        end
+
+
 
 
   #     # Directs /admin/products/* to Admin::ProductsController
