@@ -1,7 +1,6 @@
 <div class="page-header">
   <h1>  <%= @product.name %>
     <small> <%= @product.min_value %> ml</small>
-
     <div class="btn-group right"  role="group">
       <%= link_to "<span class=\"glyphicon glyphicon-arrow-left\"></span> Go back to products".html_safe, admin_products_path %>
       <%= link_to "<span class=\"glyphicon glyphicon-plus\"></span> Add new product".html_safe, controller: 'admin/products', action: :new %>
@@ -10,13 +9,7 @@
       <%= link_to "<span class=\"glyphicon glyphicon-glass\"></span> Create new cocktail with this product".html_safe, controller: 'admin/cocktails', action: :new, :product_id => @product.id %>
     </div>
   </h1>
-
-
-
 </div>
-
-
-
 
 <div class=" body_panel panel-default">
   <div class="panel-body">

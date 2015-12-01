@@ -24,8 +24,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if signed_in? %>
       <ul class="nav navbar-nav">
-        <li> <%= link_to 'Products', admin_products_path %></li>
         <li> <%= link_to 'Cocktails', admin_cocktails_path %></li>
+        <li> <%= link_to 'Products', admin_products_path %></li>
 
       </ul>
       <%end%>
@@ -45,7 +45,7 @@
 
 <% flash.each do |key,value|%>
 
-<%= content_tag(:div, value, class: "alert alert-#(key)") %>
+    <%= content_tag(:div, value, class: "alert alert-#{key}") %>
 
 <%end%>
 <%= yield %>

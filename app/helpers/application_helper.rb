@@ -9,13 +9,13 @@ module ApplicationHelper
   def text_value_cell (form_builder, wrapper = '')
     result = "#{form_builder.label(:value, class: 'col-md-1 control-label')}"
     #result += "<div class='#{wrapper}'>  #{form_builder.number_field(:value)} </div>"
-     result += "<div class='col-md-2'>  #{form_builder.number_field(:value)} </div>"
+    result += "<div class='col-md-2'>  #{form_builder.number_field(:value)} </div>"
     result.html_safe
   end
 
   def select_collection_cell (form_builder, id, collection)
     result = " #{form_builder.label(id, class: 'col-md-1 control-label') }"
-    result += "<div class='col-md-4'> #{form_builder.collection_select(id, collection, :id, :combined_name, { :prompt => true })} </div>"
+    result += "<div class='col-md-4'> #{form_builder.collection_select(id, collection, :id, :combined_name, {:prompt => true})} </div>"
     result.html_safe
   end
 
@@ -38,11 +38,28 @@ module ApplicationHelper
 
 
   def sort_buttons
-    result = '<div class="btn-group right" role="group">'
-    result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name')}"
-    result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price')}"
-    result += '</div>'
+    if params[:type] == 'name'
+      if params[:order] == 'asc'
+        result = '<div class="btn-group right" role="group">'
+        result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name', order: 'desc'), class: 'glyphicon glyphicon-triangle-bottom'}"
+        result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price')}"
+        result += '</div>'
+      else
+        result = '<div class="btn-group right" role="group">'
+        result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name', order: 'asc'), class: 'glyphicon glyphicon-triangle-top'}"
+        result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price')}"
+        result += '</div>'
+      end
+
+    else
+      result = '<div class="btn-group right" role="group">'
+      result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name', order: 'asc')}"
+      result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price')}"
+      result += '</div>'
+    end
+
     result.html_safe
+
   end
 
 end

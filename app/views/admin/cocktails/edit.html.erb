@@ -2,8 +2,10 @@
   <h1><%= controller_name.humanize%> <smal><%=action_name %></smal></h1>
 </div>
 
+<div class="body_panel panel-default">
 <%= form_for [:admin, @cocktail] do |f| %>
     <%= render partial: 'form', locals: {f: f} %>
     <!--<br>-->
     <%#= f.submit 'Save' %>
 <% end %>
+</div>

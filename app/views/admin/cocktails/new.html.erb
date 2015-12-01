@@ -2,9 +2,12 @@
   <h1><%= controller_name.humanize%> <smal><%=action_name %></smal></h1>
 </div>
 
+
+<div class="body_panel panel-default">
 <%= form_for [:admin, @cocktail] do |f| %>
     <%= render partial: 'form', locals: {f: f} %>
     <!--<br>-->
     <%#= f.submit name: 'create', value: 'create' %>
     <%#= f.submit name: 'continue', value: 'create and continue' %>
 <% end %>
+</div>
