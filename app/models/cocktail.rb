@@ -39,6 +39,14 @@ class Cocktail < ActiveRecord::Base
     }.ceil
   end
 
+  def volume_type
+    unless self.value < 150
+    'long'
+    else
+      'short'
+    end
+  end
+
   def self.find_with_includes (id)
     self.includes(ingredients: [:product]).find(id)
   end
