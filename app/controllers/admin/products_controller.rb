@@ -56,6 +56,33 @@ class Admin::ProductsController < Admin::SignedApplicationController
     # @product = Product.where(name: )
   end
 
+  def sort_by
+
+    if params[:type] == 'name'
+      if params[:order] == 'asc'
+        @products = Product.order(name: :asc)
+        render :index
+      else
+          @products = Product.order(name: :desc)
+          render :index
+        end
+
+    else
+      if params[:type] == 'price'
+
+        if params[:order] == 'asc'
+          @products = Product.all.sort_by(&:price)
+        else
+          @products = Product.all.sort_by(&:price).reverse
+        end
+        render :index
+      end
+
+    end
+
+  end
+
+
   private
   def find_item
     @product = Product.find_by(id: params[:id])

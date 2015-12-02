@@ -9,13 +9,10 @@
   </h1>
 </div>
 
-<div class="btn-group right body_panel" role="group">
-  <%= link_to "<span class=\"glyphicon glyphicon-plus\"></span> Add new product".html_safe, action: :new %>
+<div class="btn-group left body_panel" role="group">
+  <%= product_sort_buttons %>
 </div>
 
-<div class="btn-group left body_panel" role="group">
-  <%= sort_buttons %>
-</div>
 
 <div class="body_panel panel-default">
   <div class="panel-body">

@@ -54,7 +54,7 @@ Rails.application.routes.draw do
        # get '/products/sort_by/:type' => 'products#sort_by', as: :products_sort_by
 
        get 'cocktails_sort_by/:type' => 'cocktails#sort_by', as: :cocktails_sort_by
-       get 'products_products_sort_by/:type' => 'products#sort_by', as: :product_sort_by
+       get 'products_sort_by/:type' => 'products#sort_by', as: :products_sort_by
 
 
        resources :cocktails do

@@ -90,17 +90,24 @@ class Admin::CocktailsController < Admin::SignedApplicationController
         @cocktails = Cocktail.order(name: :asc)
         render :index
       else
-        if params[:order] == 'desc'
           @cocktails = Cocktail.order(name: :desc)
           render :index
-        end
       end
+    elsif params[:type] == 'price'
+
+        if params[:order] == 'asc'
+          @cocktails = Cocktail.all.sort_by(&:price)
+        else
+          @cocktails = Cocktail.all.sort_by(&:price).reverse
+        end
+        render :index
     else
-      if params[:type] == 'price'
-        @cocktails = Cocktail.all.sort_by &:price
+
+      redirect_to :index
       end
 
-    end
+
+
 
   end
 
