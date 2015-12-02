@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :welcome, only: [:show]
   get 'cocktail/:id' => 'welcome#show', as: :purchase
   get 'search_by_product/:product_name' => 'welcome#search_by_product', as: :search_product
+  get 'search_by_name' => 'welcome#search_by_name', as: :search_by_name
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
 
        get 'cocktails_sort_by/:type' => 'cocktails#sort_by', as: :cocktails_sort_by
        get 'products_sort_by/:type' => 'products#sort_by', as: :products_sort_by
+
 
 
        resources :cocktails do

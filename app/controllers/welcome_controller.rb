@@ -12,9 +12,18 @@ class WelcomeController < ApplicationController
 
   def search_by_product
     @cocktails = Cocktail.filter_by_product_with_includes(params[:product_name])
-    puts @cocktails
-    puts 11111111111111111111111111111111111
     render :index
+  end
+
+  def search_by_name
+      if  params[:name].length>1
+      @cocktails_with_name = Cocktail.where('name like?', "%#{params[:name]}%")
+      @cocktails_with_product = Cocktail.filter_by_product_with_includes(params[:name])
+      else
+        flash[:warning] = 'wrong input, query must be 2 symbols or longer'
+        redirect_to root_url
+      end
+
   end
 
   private

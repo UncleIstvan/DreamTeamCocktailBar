@@ -56,7 +56,11 @@ class Cocktail < ActiveRecord::Base
   end
 
   def self.filter_by_product_with_includes product_name
-    self.joins(:products).includes(ingredients: [:product]).where('products.name = ?', product_name)
+   # self.joins(:products).includes(ingredients: [:product]).where('products.name = ?', product_name)
+   # self.joins(:products).includes(ingredients: [:product]).where('products.name like ?', "%#{product_name}%")
+    self.joins(:products).includes(ingredients: [:product]).where('products.name like ?', "%#{product_name}%")
   end
+
+
 
 end
