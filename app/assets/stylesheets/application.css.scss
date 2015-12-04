@@ -16,7 +16,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 input[type = submit] {
   @extend .btn;
   @extend .btn-success;
@@ -64,15 +63,13 @@ form {
   margin-right: 10%;
 }
 
-.hide_overflow
-{
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
+.hide_overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.put_bottom_right
-{
+.put_bottom_right {
 
   padding-right: 6px;
   bottom: 0;
@@ -80,18 +77,16 @@ form {
   position: absolute
 }
 
-.container_relative{
+.container_relative {
   position: relative;
   display: inline-block;
 }
 
-.table tbody>tr>td.vert-align
-{
+.table tbody > tr > td.vert-align {
   vertical-align: middle;
 }
 
-.li-vert-align
-{
+.li-vert-align {
   vertical-align: middle;
 }
 
@@ -106,12 +101,26 @@ form {
   background-color: #f5f5f5;
 }
 
-
 .page-header {
   display: flex;
 }
-    
+
 .search_form {
   display: flex;
   margin-top: 25px;
+
 }
+
+.search_form
+  input[type=text] {
+    width: 300px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search_form
+  input[type=submit] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+

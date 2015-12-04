@@ -1,11 +1,10 @@
 <div class="page-header">
-  <h1><%= controller_name.humanize %> <small><%= action_name %></small>  </h1>
-
+  <h1>Searching results</h1>
 </div>
 <div class="body_panel panel-default">
-  <h1>With name:</h1>
+  <h1>Cocktails by name:</h1>
   <% if @cocktails_with_name.empty? %>
-      <small>Nothing was found</small>
+      <h3>Matching cocktails were not found</h3>
   <%else%>
   <div class="panel-body">
     <div class="row-eq-height">
@@ -43,9 +42,9 @@
 </div>
 
 <div class="body_panel panel-default">
-  <h1>With product name:</h1>
+  <h1>Products by name:</h1>
   <% if @cocktails_with_product.empty? %>
-      <small>Nothing was found</small>
+      <h3>Matching products were not found</h3>
   <%else%>
   <div class="panel-body">
     <div class="row-eq-height">

@@ -41,12 +41,12 @@ module ApplicationHelper
     if params[:type] == 'name'
       if params[:order] == 'asc'
         result = '<div class="btn-group right" role="group">'
-        result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name', order: 'desc'), class: 'glyphicon glyphicon-triangle-bottom'}"
+        result += "#{link_to "<span class=\"glyphicon glyphicon-triangle-bottom\"></span> Sort by name".html_safe, admin_cocktails_sort_by_path(type: 'name', order: 'desc') }"
         result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price')}"
         result += '</div>'
       else
         result = '<div class="btn-group right" role="group">'
-        result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name', order: 'asc'), class: 'glyphicon glyphicon-triangle-top'}"
+        result += "#{link_to "<span class=\"glyphicon glyphicon-triangle-top\"></span> Sort by name".html_safe, admin_cocktails_sort_by_path(type: 'name', order: 'asc')}"
         result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price')}"
         result += '</div>'
       end
@@ -55,12 +55,12 @@ module ApplicationHelper
         if params[:order] == 'asc'
           result = '<div class="btn-group right" role="group">'
           result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name')}"
-          result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price', order: 'desc'), class: 'glyphicon glyphicon-triangle-bottom'}"
+          result += "#{link_to "<span class=\"glyphicon glyphicon-triangle-bottom\"></span> Sort by price", admin_cocktails_sort_by_path(type: 'price', order: 'desc')}"
           result += '</div>'
         else
           result = '<div class="btn-group right" role="group">'
           result += "#{link_to 'Sort by name', admin_cocktails_sort_by_path(type: 'name')}"
-          result += "#{link_to 'Sort by price', admin_cocktails_sort_by_path(type: 'price', order: 'asc'), class: 'glyphicon glyphicon-triangle-top'}"
+          result += "#{link_to "<span class=\"glyphicon glyphicon-triangle-top\"></span> Sort by price".html_safe, admin_cocktails_sort_by_path(type: 'price', order: 'asc')}"
           result += '</div>'
         end
 
@@ -79,12 +79,12 @@ module ApplicationHelper
     if params[:type] == 'name'
       if params[:order] == 'asc'
         result = '<div class="btn-group right" role="group">'
-        result += "#{link_to 'Sort by name', admin_products_sort_by_path(type: 'name', order: 'desc'), class: 'glyphicon glyphicon-triangle-bottom'}"
+        result += "#{link_to "<span class=\"glyphicon glyphicon-triangle-bottom\"></span> Sort by name".html_safe, admin_products_sort_by_path(type: 'name', order: 'desc')}"
         result += "#{link_to 'Sort by price', admin_products_sort_by_path(type: 'price')}"
         result += '</div>'
       else
         result = '<div class="btn-group right" role="group">'
-        result += "#{link_to 'Sort by name', admin_products_sort_by_path(type: 'name', order: 'asc'), class: 'glyphicon glyphicon-triangle-top'}"
+        result += "#{link_to "<span class=\"glyphicon glyphicon-triangle-top\"></span> Sort by name".html_safe, admin_products_sort_by_path(type: 'name', order: 'asc')}"
         result += "#{link_to 'Sort by price', admin_products_sort_by_path(type: 'price')}"
         result += '</div>'
       end
@@ -93,19 +93,19 @@ module ApplicationHelper
       if params[:order] == 'asc'
         result = '<div class="btn-group right" role="group">'
         result += "#{link_to 'Sort by name', admin_products_sort_by_path(type: 'name')}"
-        result += "#{link_to 'Sort by price', admin_products_sort_by_path(type: 'price', order: 'desc'), class: 'glyphicon glyphicon-triangle-bottom'}"
+        result += "#{link_to "<span class=\"glyphicon glyphicon-triangle-bottom\"></span> Sort by price".html_safe, admin_products_sort_by_path(type: 'price', order: 'desc')}"
         result += '</div>'
       else
         result = '<div class="btn-group right" role="group">'
         result += "#{link_to 'Sort by name', admin_products_sort_by_path(type: 'name')}"
-        result += "#{link_to 'Sort by price', admin_products_sort_by_path(type: 'price', order: 'asc'), class: 'glyphicon glyphicon-triangle-top'}"
+        result += "#{link_to "<span class=\"glyphicon glyphicon-triangle-top\"></span> Sort by price".html_safe, admin_products_sort_by_path(type: 'price', order: 'asc')}"
         result += '</div>'
       end
 
     else
       result = '<div class="btn-group right" role="group">'
-      result += "#{link_to 'Sort by name', admin_products_sort_by_path(type: 'name', order: 'asc')}"
-      result += "#{link_to 'Sort by price', admin_products_sort_by_path(type: 'price')}"
+      result += "#{link_to ' Sort by name', admin_products_sort_by_path(type: 'name', order: 'asc')}"
+      result += "#{link_to ' Sort by price', admin_products_sort_by_path(type: 'price')}"
       result += '</div>'
     end
 
