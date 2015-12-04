@@ -40,7 +40,7 @@ class Cocktail < ActiveRecord::Base
   end
 
   def volume_type
-    if self.value > 150
+    unless self.value < 150
     'long'
     else
       'short'

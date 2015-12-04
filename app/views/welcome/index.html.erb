@@ -1,60 +1,45 @@
 <div class="page-header">
-  <h1><%= controller_name.humanize %>
+  <h1 class="big_flex_item"><%= controller_name.humanize %>
     <% if @cocktails.empty? %>
         <small>have not been created yet</small>
-    <%else%>
+    <% else %>
         <small><%= action_name %></small>
     <% end %>
 
   </h1>
+  <div>
+    <%= form_tag({:controller => "welcome", :action => "search_by_name"}, method: :get, class: 'search_form') do %>
+        <%= text_field_tag :name, nil %>
+        <%= submit_tag 'Search' %>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <%= form_tag({:controller => "welcome", :action => "search_by_name"}, method: :get) do %>
-          <%= text_field_tag :name %>
-          <%= submit_tag 'Search cocktail by names', name: nil %>
-      <% end %>
-    </div>
+    <% end %>
   </div>
-</div>
-</div>
 </div>
 <div class="body_panel panel-default">
-  <div class="panel-body">
-    <div class="row-eq-height">
-      <% @cocktails.each do |cocktail| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="thumbnail">
-          <div style="text-align: center">
-            <%= link_to purchase_path(cocktail), class: "container_relative" do%>
-            <%= image_tag(cocktail.image_url, class: "img-thumbnail")%>
-                <div class="put_bottom_right">
-                  <h3><span class="label label-success">
-                    <%= cocktail.price%>
-                  </span> </h3>
-                </div>
-                <% end %>
-          </div>
-          <div class="caption">
-            <h3 class="hide_overflow"><%= cocktail.name %></h3>
-            <p style="height: 36px">
-              <% cocktail.ingredients.each do |ingredient| %>
-              <span class="label label-warning" > <%=  link_to ingredient.product.name, search_product_path(ingredient.product.name)  %></span>
-                  <% end %>
-            </p>
 
-            <p><a href="#" class="btn btn-primary" role="button"> button </a>
-           <a href="#" class="btn btn-default" role="button">another button </a></p>
-          </div>
+
+  <% @shots = @cocktails.select { |item| item.volume_type == 'short' } %>
+  <% @longs = @cocktails.select { |item| item.volume_type == 'long' } %>
+
+  <% unless @shots.blank? %>
+      <div class="panel-body">
+        <div class="row-eq-height">
+          <h1>Shots</h1>
+          <%= render partial: 'collection_form', locals: {collection: @shots} %>
         </div>
       </div>
+  <% end %>
 
-      <% end %>
-    </div>
-  </div>
+
+  <% unless @longs.blank? %>
+      <div class="panel-body">
+        <div class="row-eq-height">
+          <h1>Longs</h1>
+          <%= render partial: 'collection_form', locals: {collection: @longs} %>
+        </div>
+      </div>
+  <% end %>
 </div>
-
-
 
 
 
