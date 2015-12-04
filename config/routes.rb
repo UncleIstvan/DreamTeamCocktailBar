@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'cocktail/:id' => 'welcome#show', as: :purchase
   get 'search_by_product/:product_name' => 'welcome#search_by_product', as: :search_product
   get 'search_by_name' => 'welcome#search_by_name', as: :search_by_name
+  get 'show_only_type/:volume_type' => 'welcome#show_only_type', as: :show_only_type
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

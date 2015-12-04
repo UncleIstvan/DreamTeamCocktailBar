@@ -27,6 +27,14 @@ class WelcomeController < ApplicationController
 
   end
 
+  def show_only_type
+
+    @cocktails = Cocktail.all_with_includes.select { |item| item.volume_type == params[:volume_type]}
+    render :index
+
+  end
+
+
   private
   def find_item
     @cocktail = Cocktail.find_with_includes(params[:id])

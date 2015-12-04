@@ -111,6 +111,7 @@ class Admin::CocktailsController < Admin::SignedApplicationController
 
   end
 
+
   # def sort_by_name(order = 'desc')
   #   if order == 'desc'
   #     @cocktails = Cocktail.order(name: :desc)

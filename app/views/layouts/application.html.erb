@@ -27,10 +27,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Type filter <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to 'All', controller: 'welcome', action: 'index' %>></li>
+            <li><%= link_to 'All', controller: 'welcome', action: 'index' %></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Short</a></li>
-            <li><a href="#">Long</a></li>
+            <li><a href="#"><%= link_to 'Short', show_only_type_path(volume_type: 'short')  %></a></li>
+            <li><a href="#"><%= link_to 'Long', show_only_type_path(volume_type: 'long')  %></a></li>
           </ul>
         </li>
         <li><p class="navbar-text"> <%=link_to 'Go to all cocktails', controller: 'welcome', action: 'index'%> </p></li>
