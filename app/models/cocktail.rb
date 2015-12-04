@@ -40,7 +40,7 @@ class Cocktail < ActiveRecord::Base
   end
 
   def volume_type
-    unless self.value < 150
+    if self.value > 150
     'long'
     else
       'short'
@@ -51,8 +51,8 @@ class Cocktail < ActiveRecord::Base
     self.includes(ingredients: [:product]).find(id)
   end
 
-  def all_with_includes
-
+  def self.all_with_includes
+    self.includes(ingredients: [:product]).all
   end
 
   def self.filter_by_product_with_includes product_name

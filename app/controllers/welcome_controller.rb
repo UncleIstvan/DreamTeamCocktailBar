@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   before_filter :find_item, only: [:show]
 
   def index
-    @cocktails = Cocktail.all #_with_includes
+    @cocktails = Cocktail.all_with_includes
   end
 
   def show
@@ -17,8 +17,9 @@ class WelcomeController < ApplicationController
 
   def search_by_name
       if  params[:name].length>1
-      @cocktails_with_name = Cocktail.where('name like?', "%#{params[:name]}%")
+      @cocktails_with_name = Cocktail.includes(ingredients: [:product]).where('name like?', "%#{params[:name]}%")
       @cocktails_with_product = Cocktail.filter_by_product_with_includes(params[:name])
+
       else
         flash[:warning] = 'wrong input, query must be 2 symbols or longer'
         redirect_to root_url

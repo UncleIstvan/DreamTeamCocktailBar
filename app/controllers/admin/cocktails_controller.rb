@@ -8,7 +8,7 @@ class Admin::CocktailsController < Admin::SignedApplicationController
   before_action :before_action, only: [:new]
 
   def index
-    @cocktails = Cocktail.all
+    @cocktails = Cocktail.all_with_includes
   end
 
   def new
@@ -87,18 +87,18 @@ class Admin::CocktailsController < Admin::SignedApplicationController
 
     if params[:type] == 'name'
       if params[:order] == 'asc'
-        @cocktails = Cocktail.order(name: :asc)
-        render :index
+          @cocktails = Cocktail.includes(ingredients: [:product]).order(name: :asc)
+          render :index
       else
-          @cocktails = Cocktail.order(name: :desc)
+          @cocktails = Cocktail.includes(ingredients: [:product]).order(name: :desc)
           render :index
       end
     elsif params[:type] == 'price'
 
         if params[:order] == 'asc'
-          @cocktails = Cocktail.all.sort_by(&:price)
+          @cocktails = Cocktail.all_with_includes.sort_by(&:price)
         else
-          @cocktails = Cocktail.all.sort_by(&:price).reverse
+          @cocktails = Cocktail.all_with_includes.sort_by(&:price).reverse
         end
         render :index
     else
